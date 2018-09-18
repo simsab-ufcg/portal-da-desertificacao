@@ -1,0 +1,11 @@
+.team-icon {
+  height: 250px;
+  width: 250px;
+}
+.team-icon:hover {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+.row {
+  padding-top: 5px;
+}
