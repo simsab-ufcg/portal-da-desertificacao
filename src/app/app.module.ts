@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {FooterComponent} from './footer/footer.component';
@@ -34,6 +34,7 @@ const router: Routes = [
         RouterModule,
         BrowserModule,
         RouterModule.forRoot(router),
+        NgxPaginationModule
     ],
     bootstrap: [AppComponent]
 })

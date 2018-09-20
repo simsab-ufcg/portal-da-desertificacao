@@ -1,0 +1,10 @@
+.news-icon {
+    color: #dcdcdc;
+}
+.news-icon:hover {
+    color: #fff;
+}
+
+.news-container {
+    margin-top: 30px;
+}
