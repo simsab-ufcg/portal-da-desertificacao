@@ -1,12 +1,14 @@
+#partners-container {
+    margin-top: 30px;
+}
+
 .partners-title {
   text-align: center;
+    font-weight: bold;
+    font-size: 26px;
 }
 
 .partners-logo {
   height: 150px;
   width: 160px;
-}
-
-.row {
-  padding-top: 5px;
 }
