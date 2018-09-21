@@ -3,3 +3,47 @@
     -moz-box-shadow: 0px 6px 19px -1px rgba(0,0,0,0.30);
     box-shadow: 0px 6px 19px -1px rgba(0,0,0,0.30);
 }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#projeto:focus {
+    background-color: #214f77;
+}
+
+#equipe:focus {
+    background-color: #214f77;
+}
+
+#parceiros:focus {
+    background-color: #214f77;
+}
+
+#insa:focus {
+    background-color: #214f77;
+}
+
+#desertificacao:focus {
+    background-color: #214f77;
+}
+
+#projeto:hover {
+    background-color: #214f77;
+}
+
+#equipe:hover {
+    background-color: #214f77;
+}
+
+#parceiros:hover {
+    background-color: #214f77;
+}
+
+#insa:hover {
+    background-color: #214f77;
+}
+
+#desertificacao:hover {
+    background-color: #214f77;
+}
