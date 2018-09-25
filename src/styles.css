@@ -2,13 +2,22 @@
   color: #dcdcdc;
 }
 .icon:hover {
-  color: #037DBC;
+  color: #214f77;
+}
+
+.full-page {
+    position:absolute;
+    background-color: #F2F2F2;
+    margin-top: 10px;
+    left:0;
+    z-index:11;
+    width:100%;
+    height:83%;
 }
 
 .acesso-informacao-logo {
   padding-left: 20px;
   float: left;
-  color: #037DBC;
 }
 
 .brasil-logo {

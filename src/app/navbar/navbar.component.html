@@ -1,22 +1,38 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-  <a class="navbar-brand" style="margin-left: 100px" href="#">
-    <img src="../../assets/img/logo/logo.png" width="200" height="75" alt="">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" style="margin-right: 40px" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="about" routerLinkActive="active"><i class="fas fa-info-circle fa-3x icon"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="partners" routerLinkActive="active"><i class="fas fa-handshake fa-3x icon"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="team" routerLinkActive="active"><i class="fas fa-users fa-3x icon"></i></a>
-      </li>
-    </ul>
-  </div>
+    <a class="navbar-brand" style="margin-left: 100px" href="#">
+        <img src="../../assets/img/logo/logo.png" width="160" height="55" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" style="margin-right: 40px" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown selectpicker">
+                <a id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                   class="nav-link dropdown-toggle" routerLink="partners" routerLinkActive="active">
+                    <i class="fas fa-info-circle fa-2x icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
+                    <a id="projeto" class="dropdown-item" routerLink="projeto" routerLinkActive="active">Sobre o Projeto</a>
+                    <a id="equipe" class="dropdown-item" routerLink="equipe" routerLinkActive="active">Quem é Quem</a>
+                    <a id="parceiros" class="dropdown-item" routerLink="parceiros" routerLinkActive="active">Nossos Parceiros</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="institutional-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                   class="nav-link dropdown-toggle" routerLink="partners" routerLinkActive="active">
+                    <i class="fas fa-graduation-cap fa-2x icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
+                    <a id="insa" class="dropdown-item" routerLink="insa" routerLinkActive="active">Sobre o INSA</a>
+                    <a id="desertificacao" class="dropdown-item" routerLink="desertificacao" routerLinkActive="active">Desertificação</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="noticias" routerLinkActive="active"><i
+                    class="far fa-newspaper fa-2x icon"></i></a>
+            </li>
+        </ul>
+    </div>
 </nav>
-<hr>
