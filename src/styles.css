@@ -1,13 +1,17 @@
+body {
+  color: #ffffff;
+}
+
 .icon {
   color: #dcdcdc;
 }
 .icon:hover {
-  color: #214f77;
+  color: #ad3436;
 }
 
 .full-page {
     position:absolute;
-    background-image: url("./assets/img/backgrounds/semiarido.jpg.png");
+    background-color: #ad3436;
     background-size: cover;
     margin-top: 0px;
     left:0;

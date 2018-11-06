@@ -5,17 +5,17 @@
 }
 
 .dropdown-item.active, .dropdown-item:active {
-    background-color: #214f77;
+    background-color: #ad3436;
     color: #ffffff;
 }
 
 .dropdown-item:focus {
-    background-color: #214f77;
+    background-color: #ad3436;
     color: #FFFFFF;
 }
 
 .dropdown-item:hover {
-    background-color: #214f77;
+    background-color: #ad3436;
     color: #FFFFFF;
 }
 

@@ -1,5 +1,5 @@
 #partners-container {
-    margin-top: 30px;
+    margin-top: 80px;
 }
 
 .partners-title {
@@ -9,6 +9,28 @@
 }
 
 .partners-logo {
-  height: 150px;
-  width: 160px;
+  height: 80%;
+  width: 100%;
+}
+
+.col-md-2, .col-md-3 {
+  padding-top: 10px;
+}
+
+.larger-logos {
+  height: 90%;
+  width: 80%;
+}
+
+.uepb {
+  height: 100%;
+  width: 80%;
+}
+
+.ufcg {
+  margin-top: 10px;
+}
+
+.lsd {
+  margin-top: 5px;
 }

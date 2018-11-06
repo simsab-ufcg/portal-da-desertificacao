@@ -1,5 +1,6 @@
 .desertification-container {
     margin-top: 30px;
+    position: sticky;
 }
 
 .title {
@@ -12,5 +13,5 @@
 }
 
 .panel {
-    
+    background-color: whitesmoke;
 }
