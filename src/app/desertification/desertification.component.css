@@ -4,8 +4,13 @@
 
 .title {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .content {
     text-align: justify;
+}
+
+.panel {
+    
 }
