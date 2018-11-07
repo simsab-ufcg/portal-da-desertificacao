@@ -1,5 +1,14 @@
-#partners-container {
-    margin-top: 80px;
+.partners-container {
+  position: relative;
+}
+
+.absolute-center {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin-top: 60px;
 }
 
 .partners-title {
@@ -8,13 +17,8 @@
     font-size: 26px;
 }
 
-.ctrn {
-  height: 80%;
-  width: 140%;
-}
-
 .partners-logo {
-  height: 80%;
+  height: 90%;
   width: 100%;
 }
 
@@ -38,4 +42,13 @@
 
 .lsd {
   margin-top: 5px;
+}
+
+.ctrn {
+  height: 90%;
+  width: 140%;
+}
+
+.ppgmmc {
+  padding-left: 10px;
 }

@@ -1,7 +1,3 @@
-body {
-  color: #ffffff;
-}
-
 .icon {
   color: #dcdcdc;
 }
@@ -9,15 +5,16 @@ body {
   color: #ad3436;
 }
 
-.full-page {
+body {
     position:absolute;
     background-color: #ad3436;
     background-size: cover;
+    background-repeat: repeat repeat;
     margin-top: 0px;
     left:0;
     z-index:11;
     width:100%;
-    height:83.7%;
+    height:100%;
 }
 
 .acesso-informacao-logo {
