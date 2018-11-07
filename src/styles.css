@@ -5,6 +5,14 @@
   color: #ad3436;
 }
 
+.curriculum-icon {
+  color: #fff;
+}
+
+.curriculum-icon:hover {
+  color: #D18F93 !important;
+}
+
 body {
     position:absolute;
     background-color: #ad3436;
