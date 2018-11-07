@@ -1,5 +1,6 @@
 .partners-container {
   position: relative;
+  margin-top: 8%;
 }
 
 .absolute-center {
@@ -8,7 +9,6 @@
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  margin-top: 60px;
 }
 
 .partners-title {
@@ -27,7 +27,7 @@
 }
 
 .larger-logos {
-  height: 90%;
+  height: 80%;
   width: 80%;
 }
 
