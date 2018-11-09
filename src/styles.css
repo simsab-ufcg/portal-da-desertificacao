@@ -25,6 +25,11 @@ body {
     height:100%;
 }
 
+#index-logo {
+  object-fit: scale-down;
+  width: 100%;
+}
+
 .acesso-informacao-logo {
   padding-left: 20px;
   float: left;
