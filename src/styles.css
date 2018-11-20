@@ -13,16 +13,31 @@
   color: #D18F93 !important;
 }
 
+.simsab-panel {
+  background: white !important;
+  margin-top: 5%;
+  border-radius: 25px;
+  opacity: .50; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=50); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=50)"; /* IE 8 */
+    -khtml-opacity: .50; /* Safari 1.x */
+    -moz-opacity: .50; /* FF lt 1.5, Netscape */
+}
+
 body {
     position:absolute;
     background: url('./assets/img/backgrounds/bg.png');
     background-size: cover;
+    background-blend-mode: color-dodge;
     background-repeat: repeat repeat;
     margin-top: 0px;
     left:0;
     z-index:11;
     width:100%;
     height:100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 #index-logo {

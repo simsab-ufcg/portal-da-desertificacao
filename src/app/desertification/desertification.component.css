@@ -1,6 +1,6 @@
 .desertification-container {
     margin-top: 30px;
-    position: sticky;
+    position: inherit;
 }
 
 .title {
