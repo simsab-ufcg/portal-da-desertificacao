@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .icon {
   color: #dcdcdc;
 }
@@ -43,6 +52,9 @@ body {
 #index-logo {
   object-fit: scale-down;
   width: 100%;
+  animation-name: fadeIn;
+  animation-duration: 2400ms;
+  animation-timing-function: ease-in;
 }
 
 .acesso-informacao-logo {
