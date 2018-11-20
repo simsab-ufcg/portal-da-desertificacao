@@ -15,7 +15,7 @@
 
 body {
     position:absolute;
-    background-color: #ad3436;
+    background: url('./assets/img/backgrounds/bg.png');
     background-size: cover;
     background-repeat: repeat repeat;
     margin-top: 0px;
