@@ -38,3 +38,10 @@
     }
   }
   
+  .center {
+    margin: auto;
+  }
+
+  .image-size {
+    margin-top: 2%;
+  }
