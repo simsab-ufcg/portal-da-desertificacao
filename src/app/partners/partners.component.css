@@ -1,45 +1,53 @@
 .container {
-  margin-top: 5%; 
+    margin-top: 5%;
 }
 
 .partners-title {
-  text-align: center;
+    text-align: center;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 36px;
 }
 
 .partners-logo {
-  height: 90%;
-  width: 100%;
+    height: 40%;
+    width: 70%;
 }
 
-.col-md-2, .col-md-3 {
-  padding-top: 10px;
+.col-md-2,
+.col-md-3 {
+    padding-top: 10px;
 }
 
 .larger-logos {
-  height: 80%;
-  width: 80%;
+    height: 80%;
+    width: 80%;
 }
 
 .uepb {
-  height: 100%;
-  width: 80%;
+    height: 100%;
+    width: 80%;
 }
 
 .ufcg {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .lsd {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 
 .ctrn {
-  height: 90%;
-  width: 140%;
+    height: 90%;
+    width: 140%;
 }
 
 .ppgmmc {
-  padding-left: 10px;
+    padding-left: 10px;
+}
+
+.finep-logo {
+    position: relative;
+    padding-top: 10px;
+    width: 100%;
+    height: 60%;
 }
