@@ -78,3 +78,8 @@ td {
   padding: 0%;
   column-rule-style: hidden;
 }
+
+#gmap {
+  height: 400px;
+  margin-bottom: 10%;
+}
