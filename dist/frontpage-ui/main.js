@@ -374,7 +374,7 @@ module.exports = ".center {\n    margin: auto;\n}\n\n.image-size {\n    margin-t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"center\">\n    <div class=\"container wow animated fadeInLeft\" style=\"position: static;\">\n        <div class=\"row\">\n            <img src=\"../../assets/img/logo/base.png\" usemap=\"#image-map\" style=\"width: fit-content; height: 100%;\" class=\"img-responsive center image-size animate-pop-in\">\n            <map name=\"image-map\">\n                <area target=\"\" alt=\"Sobre\" title=\"Sobre\" routerLink=\"projeto\" routerLinkActive=\"active\" coords=\"261,110,103\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Parceiros\" title=\"Parceiros\" routerLink=\"parceiros\" routerLinkActive=\"active\" coords=\"119,332,107\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Indicadores\" title=\"Indicadores\" routerLink=\"indicadores\" routerLinkActive=\"active\"\n                    coords=\"205,589,102\" shape=\"circle\">\n                <area target=\"\" alt=\"Notícias\" title=\"Notícias\" routerLink=\"noticias\" routerLinkActive=\"active\" coords=\"746,629,103\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Quem é quem?\" title=\"Quem é quem?\" routerLink=\"equipe\" routerLinkActive=\"active\"\n                    coords=\"818,416,102\" shape=\"circle\">\n                <area target=\"\" alt=\"INSA\" title=\"INSA\" routerLink=\"insa\" routerLinkActive=\"active\" coords=\"482,232,98\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Desertificação\" title=\"Desertificação\" routerLink=\"desertificacao\" routerLinkActive=\"active\"\n                    coords=\"685,137,107\" shape=\"circle\">\n                <area target=\"\" alt=\"Index\" title=\"Index\" routerLink=\"home\" routerLinkActive=\"active\" coords=\"332,432,417,351,460,389,484,364,551,430,614,495,430,678,431,535,411,516,334,515\"\n                    shape=\"poly\">\n            </map>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"center\">\n    <div class=\"container wow animated fadeInLeft\" style=\"position: static;\">\n        <div class=\"row\">\n            <img src=\"../../assets/img/logo/base.png\" usemap=\"#image-map\" style=\"width: fit-content; height: 100%;\" class=\"img-responsive center image-size animate-pop-in\">\n            <map name=\"image-map\">\n                <area target=\"\" alt=\"Sobre\" title=\"Sobre\" routerLink=\"projeto\" routerLinkActive=\"active\" coords=\"261,110,103\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Parceiros\" title=\"Parceiros\" routerLink=\"parceiros\" routerLinkActive=\"active\" coords=\"119,332,107\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Indicadores\" title=\"Indicadores\" routerLink=\"indicadores\" routerLinkActive=\"active\"\n                    coords=\"205,589,102\" shape=\"circle\">\n                <area target=\"\" alt=\"Notícias\" title=\"Notícias\" routerLink=\"noticias\" routerLinkActive=\"active\" coords=\"746,629,103\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Quem é quem?\" title=\"Quem é quem?\" routerLink=\"equipe\" routerLinkActive=\"active\"\n                    coords=\"818,416,102\" shape=\"circle\">\n                <area target=\"\" alt=\"INSA\" title=\"INSA\" routerLink=\"insa\" routerLinkActive=\"active\" coords=\"482,232,98\"\n                    shape=\"circle\">\n                <area target=\"\" alt=\"Desertificação\" title=\"Desertificação\" routerLink=\"desertificacao\" routerLinkActive=\"active\"\n                    coords=\"685,137,107\" shape=\"circle\">\n                <area target=\"\" alt=\"Index\" title=\"Index\" routerLink=\"home\" routerLinkActive=\"active\" coords=\"332,432,417,351,460,389,484,364,551,430,614,495,430,678,431,535,411,516,334,515\"\n                    shape=\"poly\">\n            </map>\n        </div>\n    </div>\n    <div #gmap style=”width:100%;height:400px”></div>\n</div>"
 
 /***/ }),
 
@@ -403,7 +403,18 @@ var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
     }
     HomeComponent.prototype.ngOnInit = function () {
+        var mapProp = {
+            center: new google.maps.LatLng(18.5793, 73.8143),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        console.log('oi');
+        this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('gmap'),
+        __metadata("design:type", Object)
+    ], HomeComponent.prototype, "gmapElement", void 0);
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-home',

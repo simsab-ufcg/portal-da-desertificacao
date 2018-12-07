@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { } from 'googlemaps';
+import { } from '@types/googlemaps';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +15,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     var mapProp = {
-      center: new google.maps.LatLng(18.5793, 73.8143),
+      center: new google.maps.LatLng(-7.251961, -35.945091),
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    console.log('oi');
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
