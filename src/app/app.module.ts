@@ -12,6 +12,14 @@ import {HomeComponent} from './home/home.component';
 import {NewsComponent} from './news/news.component';
 import { InsaComponent } from './insa/insa.component';
 import { DesertificationComponent } from './desertification/desertification.component';
+import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+
+const materialModules = [
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+  ];
 
 const router: Routes = [
     {path: '', component: HomeComponent},
@@ -40,7 +48,9 @@ const router: Routes = [
         RouterModule,
         BrowserModule,
         RouterModule.forRoot(router),
-        NgxPaginationModule
+        NgxPaginationModule,
+        materialModules,
+        HttpClientModule
     ],
     bootstrap: [AppComponent]
 })
