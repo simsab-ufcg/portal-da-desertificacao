@@ -14,6 +14,7 @@ import { InsaComponent } from './insa/insa.component';
 import { DesertificationComponent } from './desertification/desertification.component';
 import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { StripHTMLPipe } from './strip-html.pipe';
 
 const materialModules = [
     MatToolbarModule,
@@ -42,7 +43,8 @@ const router: Routes = [
         HomeComponent,
         NewsComponent,
         InsaComponent,
-        DesertificationComponent
+        DesertificationComponent,
+        StripHTMLPipe
     ],
     imports: [
         RouterModule,

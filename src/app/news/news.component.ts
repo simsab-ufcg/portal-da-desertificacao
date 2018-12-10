@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StripHTMLPipe } from '../strip-html.pipe';
 
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styleUrls: ['./news.component.css'],
+  providers: [ StripHTMLPipe ]
 })
 
 @Injectable({
