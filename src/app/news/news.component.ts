@@ -23,7 +23,7 @@ export class NewsComponent implements OnInit {
   getPosts(): Observable<any[]> {
     return this.http.get<any[]>('http://blog.coddy.com.br/wp-json/wp/v2/posts?_embed', {
       params: {
-        per_page: '2'
+        per_page: '12'
       }
     });
   }
