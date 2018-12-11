@@ -12,3 +12,7 @@
 .title {
     text-align: center;
 }
+
+.card-text {
+    color: slategrey;
+}
