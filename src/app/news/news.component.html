@@ -1,10 +1,10 @@
 <div class="full-page">
-    <div class="container news-container" fxLayout="row wrap" fxLayoutGap="16px">
+    <div class="container-fluid news-container" fxLayout="row wrap" fxLayoutGap="16px">
         <h3 class="title">POSTAGENS</h3>
         <div class="d-flex bd-highlight">
             <div class="p-2 flex-fill bd-highlight" *ngFor="let post of posts$ | async">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="http://placehold.it/400x200" alt="Card image cap">
+                    <img class="card-img-top" src="{{ post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url  }}">            
                     <div class="card-body">
                         <h5 class="card-title" style="color: black;">{{ post.title.rendered }}</h5>
                          <p class="card-text"> {{ post.excerpt.rendered | stripHTML }} </p> 
