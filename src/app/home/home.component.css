@@ -57,7 +57,7 @@ animation-name: fadeInLeft;
 }
 
 .base-logo {
-  width: 40%  ;
+  width: 55%  ;
   height: auto;
   position: absolute;
 }
@@ -77,4 +77,49 @@ table {
 td {
   padding: 0%;
   column-rule-style: hidden;
+}
+
+#gmap {
+  height: 400px;
+  margin-bottom: 10%;
+}
+
+.aboutspeed {
+  animation-duration: 3s;
+  animation-delay: 0.1s;
+}
+
+.feedspeed {
+  animation-duration: 3s;
+  animation-delay: 0.6s;
+}
+
+.indicatorspeed {
+  animation-duration: 3s;
+  animation-delay: 1.1s;
+}
+
+.desertificationspeed {
+  animation-duration: 3s;
+  animation-delay: 1.6s;
+}
+
+.partnerspeed {
+  animation-duration: 3s;
+  animation-delay: 2.1s;
+}
+
+.whospeed {
+  animation-duration: 3s;
+  animation-delay: 2.6s;
+}
+
+.insaspeed {
+  animation-duration: 3s;
+  animation-delay: 3.1s;
+}
+
+.urfspeed {
+  animation-duration: 5s;
+  animation-delay: 4.2s;
 }
