@@ -15,6 +15,7 @@ import { DesertificationComponent } from './desertification/desertification.comp
 import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { StripHTMLPipe } from './strip-html.pipe';
+import { CommonModule } from '@angular/common';
 
 const materialModules = [
     MatToolbarModule,
@@ -44,7 +45,7 @@ const router: Routes = [
         NewsComponent,
         InsaComponent,
         DesertificationComponent,
-        StripHTMLPipe
+        StripHTMLPipe,
     ],
     imports: [
         RouterModule,
@@ -52,7 +53,8 @@ const router: Routes = [
         RouterModule.forRoot(router),
         NgxPaginationModule,
         materialModules,
-        HttpClientModule
+        HttpClientModule,
+        CommonModule
     ],
     bootstrap: [AppComponent]
 })
