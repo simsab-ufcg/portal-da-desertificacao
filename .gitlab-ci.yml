@@ -14,7 +14,6 @@ test site:
   script:
     -  npm install -g @angular/cli 
     -  npm install 
-    -  whereis ng
-#    -  ng server --host 0.0.0.0 --port 80 &
+    -  ng server --host 0.0.0.0 --port 80 &
 
   
