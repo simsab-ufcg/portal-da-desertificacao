@@ -1,0 +1,18 @@
+image: node
+
+stages:
+  - test
+  - package
+  - deploy
+
+before_script:
+  - whoami
+  - pwd
+
+test site:
+  stage: test
+  script:
+    - cd website
+    - npm install && npm run start &
+
+  
