@@ -12,7 +12,9 @@ before_script:
 test site:
   stage: test
   script:
-    -  npm install -g @angular/cli && npm install  
-    -  ng server --host 0.0.0.0 --port 80 &
+    -  npm install -g @angular/cli 
+    -  npm install 
+    -  whereis ng
+#    -  ng server --host 0.0.0.0 --port 80 &
 
   
