@@ -8,6 +8,7 @@ stages:
 before_script:
   - whoami
   - pwd
+  - ls -lrtha
 
 test site:
   stage: test
