@@ -11,7 +11,7 @@ before_script:
 build-docker-img:
   stage: test
   variables:
-    CNAME: ^angular-
+    CNAME: angular2
     GIT_STRATEGY: none
   script:
     - docker build -t ${CNAME}:2.0 . # --no-cache
