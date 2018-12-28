@@ -21,12 +21,18 @@ build-docker-img:
 
 error:
   stage: test
+  variables:
+    CNAME: swarm-front
+    GIT_STRATEGY: none
   script: 
     - docker rm -f ${CNAME}
   when: on_failure
 
 continue:
   stage: test  
+  variables:
+    CNAME: swarm-front
+    GIT_STRATEGY: none
   script:
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
