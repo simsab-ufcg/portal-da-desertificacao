@@ -14,22 +14,23 @@ build-docker-img:
     CNAME: angular2
     GIT_STRATEGY: none
   script:
-     - docker build -t ${CNAME}:2.0 . # --no-cache
-     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
+    - docker build -t ${CNAME}:2.0 . # --no-cache
+    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   cache:
     key: site-package
     policy: push
     paths:
-     - ./home/gitlab-runner/builds/
+     - ./home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
   only:
     - master
      
 cleanup_build_job:
   stage: cleanup_build
-  script:  docker rm -f ${CNAME}
-    - 
+  script: 
+    - docker rm -f ${CNAME}
+    - docker run --name ${CNAME} -p 8082:80 -it -d ${CNAME}:2.0   
   when: on_failure
 
   
