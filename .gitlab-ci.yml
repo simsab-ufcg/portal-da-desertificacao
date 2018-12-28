@@ -8,19 +8,19 @@ before_script:
    - pwd
 
 build-docker-img:
-   stage: test
-   script:
+  stage: test
+  script:
      - docker build -t frontend-angular:2.0 . --no-cache
      - docker run --name frontend-nodejs -p 80:80 -it -d frontend-angular:2.0 
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
-   cache:
-   #key: site-package
-   policy: push
-   paths:
-      - ./build
-    only:
-      - develop
+  cache:
+    key: site-package
+    policy: push
+    paths:
+     - ./build
+  only:
+    - develop
      
   
 
