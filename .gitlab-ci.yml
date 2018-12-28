@@ -18,20 +18,23 @@ build-docker-img:
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
+  environment:
+    name: test
+    url: http://${CNAME}
   cache:
     key: site-package
     policy: push
     paths:
      - ./home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
   only:
-    - master
+    - develop
      
-cleanup_build_job:
-  stage: cleanup_build
-  script: 
-    - docker rm -f ${CNAME}
-    - docker run --name ${CNAME} -p 8082:80 -it -d ${CNAME}:2.0   
-  when: on_failure
+#cleanup_build_job:
+#  stage: cleanup_build
+#  script: 
+#    - docker rm -f ${CNAME}
+#    - docker run --name ${CNAME} -p 8082:80 -it -d ${CNAME}:2.0   
+#  when: on_failure
 
   
 
