@@ -25,7 +25,7 @@ build-docker-img:
     key: site-package
     policy: push
     paths:
-     - ./home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
+     - /home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
   only:
     - develop
      
@@ -33,7 +33,7 @@ cleanup_build_job:
   stage: cleanup_build
   script: 
     - docker rm -f $(docker ps -aq -f status=exited)  
-    - docker run --name ${CNAME} -p 8082:80 -it -d ${CNAME}:2.0   
+    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0   
   when: on_failure
 
   
