@@ -19,15 +19,6 @@ build-docker-img:
   script:
     - docker build -t ${CNAME}:2.0 . # --no-cache 
 
-error:
-  stage: test
-  variables:
-    CNAME: swarm-front
-    GIT_STRATEGY: none
-  script: 
-    - docker rm -f ${CNAME}
-  when: on_failure
-
 continue:
   stage: test  
   variables:
@@ -48,6 +39,15 @@ continue:
   only:
     - develop
      
+error:
+  stage: test
+  variables:
+    CNAME: swarm-front
+    GIT_STRATEGY: none
+  script: 
+    - docker rm -f ${CNAME}
+  when: on_failure
+
 cleanup_build_job:
   stage: cleanup_build
   script: 
