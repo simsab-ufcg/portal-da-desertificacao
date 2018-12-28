@@ -21,7 +21,7 @@ build-docker-img:
     key: site-package
     policy: push
     paths:
-     - ./build
+     - ./home/gitlab-runner/builds/
   only:
     - master
      
