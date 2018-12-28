@@ -6,15 +6,11 @@ stages:
   - deploy
 
 before_script:
-  - whoami
-  - pwd
-  - ls -lrtha
+   - docker info 
 
-test site:
-  stage: test
-  script:
-    -  npm install -g @angular/cli 
-    -  npm install 
-    -  ng server --host 0.0.0.0 --port 80 &
-
+build-docker-img:
+   stage: test
+   script:
+     - docker build -t frontend-angular:2.0 . 
+     
   
