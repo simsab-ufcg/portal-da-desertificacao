@@ -1,5 +1,6 @@
 stages:
   - test
+  - cleanup_build
   - package
   - deploy
 
@@ -25,5 +26,11 @@ build-docker-img:
   only:
     - master
      
+cleanup_build_job:
+  stage: cleanup_build
+  script:  docker rm -f ${CNAME}
+    - 
+  when: on_failure
+
   
 
