@@ -20,7 +20,7 @@ build-docker-img:
     paths:
      - ./build
   only:
-    - develop
+    - master
      
   
 
