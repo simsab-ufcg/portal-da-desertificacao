@@ -17,8 +17,17 @@ build-docker-img:
    - docker info 
    - pwd
   script:
-    - docker build -t ${CNAME}:2.0 . # --no-cache
+    - docker build -t ${CNAME}:2.0 . # --no-cache 
+
+error:
+  stage: test
+  script: 
     - docker rm -f ${CNAME}
+  when: on_failure
+
+continue:
+  stage: test  
+  script:
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
