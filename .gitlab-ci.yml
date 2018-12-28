@@ -11,7 +11,7 @@ stages:
 build-docker-img:
   stage: test
   variables:
-    CNAME: angular2
+    CNAME: swarm-front
     GIT_STRATEGY: none
   before_script:
    - docker info 
@@ -24,7 +24,7 @@ build-docker-img:
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   environment:
     name: test
-    url: http://${CNAME}
+    url: http://${CNAME}:8081
   cache:
     key: site-package
     policy: push
