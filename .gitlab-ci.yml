@@ -9,9 +9,11 @@ before_script:
 
 build-docker-img:
   stage: test
+  variables:
+    IMG-NAME: ^frontend-angular-*
   script:
-     - docker build -t frontend-angular:2.0 . --no-cache
-     - docker run --name frontend-nodejs -p 8081:80 -it -d frontend-angular:2.0 
+     - docker build -t ${IMG-NAME}:2.0 . # --no-cache
+     - docker run --name ${IMG-NAME} -p 8081:80 -it -d ${IMG-NAME}:2.0 
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   cache:
