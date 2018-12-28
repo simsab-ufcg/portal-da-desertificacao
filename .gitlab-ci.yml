@@ -4,17 +4,21 @@ stages:
   - package
   - deploy
 
-before_script:
-   - docker info 
-   - pwd
+#before_script:
+#   - docker info 
+#   - pwd
 
 build-docker-img:
   stage: test
   variables:
     CNAME: angular2
     GIT_STRATEGY: none
+  before_script:
+   - docker info 
+   - pwd
   script:
     - docker build -t ${CNAME}:2.0 . # --no-cache
+    - docker rm -f ${CNAME}
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
@@ -33,8 +37,6 @@ cleanup_build_job:
   stage: cleanup_build
   script: 
     - docker rm -f $(docker ps -aq -f status=exited) 
-    - docker rm -f ${CNAME} 
-    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0   
   when: on_failure
 
   
