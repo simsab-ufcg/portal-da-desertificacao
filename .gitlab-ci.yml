@@ -22,11 +22,11 @@ build-docker-img:
   environment:
     name: build
     url: http://${CNAME}
-  cache:
-    key: site-package
-    policy: push
-    paths:
-     - /home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
+  #cache:
+  #  key: site-package
+  #  policy: push
+  #  paths:
+  #   - /home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
   only:
     - master
      
