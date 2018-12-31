@@ -1,6 +1,6 @@
 stages:
   - test
-  - package
+  - build
   - deploy
 
 before_script:
@@ -8,7 +8,7 @@ before_script:
   - pwd
 
 build-docker-img:
-  stage: test
+  stage: build
   variables:
       CNAME: swarm.insa.gov.br
       GIT_STRATEGY: none
@@ -20,7 +20,7 @@ build-docker-img:
     - docker rm -f ${CNAME} & > /dev/null  2>&1
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
   environment:
-    name: test
+    name: build
     url: http://${CNAME}
   only:
     - develop
