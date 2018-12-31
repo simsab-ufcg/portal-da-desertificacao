@@ -15,9 +15,9 @@ build-docker-img:
   before_script:
     - docker info
     - pwd
-    - ls
+    - git branch
   script:
-    - ./clean-up.sh 
+    - sh clean-up.sh 
     - docker build -t ${CNAME}:2.0 . # --no-cache
    # - docker rm -f ${CNAME} # > /dev/null  2>&1
     - docker run --name ${CNAME}  -p 8081:80 -it -d ${CNAME}:2.0 
