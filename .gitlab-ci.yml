@@ -4,8 +4,7 @@ stages:
   - deploy
 
 before_script:
-   - docker info 
-   - pwd
+  - pwd
    
 
 build-docker-img:
