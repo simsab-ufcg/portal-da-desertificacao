@@ -18,7 +18,7 @@ build-docker-img:
   script:
     - docker build -t ${CNAME}:2.0 . # --no-cache
     - docker rm -f ${CNAME} & > /dev/null  2>&1
-    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 > /dev/null  2>&1
+    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0 
   environment:
     name: test
     url: http://${CNAME}
