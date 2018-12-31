@@ -10,7 +10,7 @@ before_script:
 build-docker-img:
   stage: test
   variables:
-      CNAME: swarm
+      CNAME: swarm.insa.gov.br
       GIT_STRATEGY: none
   before_script:
     - docker info
