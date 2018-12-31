@@ -1,5 +1,7 @@
 #/bin/bash
 
-if [ -f  docker ps -a|grep '${CNAME}' ]; then
+docker=$(docker ps -a|grep '${CNAME}')
+
+if [ -f  $docker ]; then
 docker rm -f ${CNAME}
 fi
