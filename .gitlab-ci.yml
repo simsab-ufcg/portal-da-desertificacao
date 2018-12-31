@@ -20,7 +20,7 @@ build-docker-img:
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0
   environment:
     name: test
-    url: http://${CNAME}:8081
+    url: http://${CNAME}
   only:
     - develop
     
