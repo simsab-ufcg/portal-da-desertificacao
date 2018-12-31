@@ -1,17 +1,17 @@
 stages:
   - test
-  - cleanup_build
-  - package
+  - build
   - deploy
 
 before_script:
    - docker info 
    - pwd
+   - ls
 
 build-docker-img:
-  stage: test
+  stage: build
   variables:
-    CNAME: angular2
+    CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
   script:
     - docker build -t ${CNAME}:2.0 . # --no-cache
@@ -19,7 +19,7 @@ build-docker-img:
     # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
     # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   environment:
-    name: test
+    name: build
     url: http://${CNAME}
   cache:
     key: site-package
@@ -27,7 +27,7 @@ build-docker-img:
     paths:
      - ./home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
   only:
-    - develop
+    - master
      
 #cleanup_build_job:
 #  stage: cleanup_build
