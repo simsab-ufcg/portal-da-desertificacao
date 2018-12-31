@@ -1,19 +1,30 @@
-image: node
-
 stages:
   - test
-  - package
+  - build
   - deploy
 
 before_script:
-  - whoami
   - pwd
-test site:
-  stage: test
-  before_script:
-    - npm install -g @angular/cli
+
+
+build-docker-img:
+  stage: build
+  variables:
+    CNAME: swarm.insa.gov.br
+    GIT_STRATEGY: none
   script:
-    - npm install && ng serve --host 0.0.0.0 --port 8081 &
+    #- ./shell.sh
+    - docker build -t ${CNAME}:2.0 . # --no-cache
+    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0
+    # - docker tag frontend-angular:2.0 docker-registry.insa.gov.br:5000/frontend-angular:2.0
+    # - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
+  environment:
+    name: build
+    url: http://${CNAME}
+  #cache:
+  #  key: site-package
+  #  policy: push
+  #  paths:
+  #   - /home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
   only:
     - master
-    
