@@ -15,6 +15,7 @@ build-docker-img:
   before_script:
     - docker info
     - pwd
+    - ls -lrth
   script:
     - ./clean-up.sh 
     - docker build -t ${CNAME}:2.0 . # --no-cache
