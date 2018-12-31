@@ -15,7 +15,7 @@ build-docker-img:
   before_script:
     - docker info
     - pwd
-    - ls 
+    - ls
   script:
     - ./shell.sh
     - docker build -t ${CNAME}:2.0 . # --no-cache
