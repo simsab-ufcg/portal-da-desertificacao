@@ -9,6 +9,9 @@ before_script:
 
 build-docker-img:
   stage: test
+  variables:
+      CNAME: swarm-front
+      GIT_STRATEGY: none
   before_script:
     - docker info
     - pwd
@@ -18,11 +21,6 @@ build-docker-img:
   environment:
     name: test
     url: http://${CNAME}:8081
-  cache:
-      key: site-package
-      policy: push
-      paths:
-        - /home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
-    only:
-      - develop
+  only:
+    - develop
     
