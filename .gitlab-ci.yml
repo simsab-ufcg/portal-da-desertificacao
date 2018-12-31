@@ -17,11 +17,11 @@ build-docker-img:
     - pwd
   script:
     - cat <<EOF  docker=$(docker ps -a|grep '${CNAME}') \
-      if [ -f  $docker ] \ 
+      if [ "$1" -ne "0" ] \ 
       then \
       docker rm -f ${CNAME} \
       else \
-      /dev/null 2>&1 \
+      exit 1 \
       fi  \ 
       EOF
     - docker build -t ${CNAME}:2.0 . # --no-cache
