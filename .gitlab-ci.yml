@@ -8,3 +8,12 @@ stages:
 before_script:
   - whoami
   - pwd
+test site:
+  stage: test
+  before_script:
+    - npm install -g @angular/cli
+  script:
+    - npm install && ng serve --host 0.0.0.0 --port 8081 &
+  only:
+    - master
+    
