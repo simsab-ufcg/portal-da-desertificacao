@@ -11,7 +11,7 @@ build-docker-img:
   stage: build
   variables:
     CNAME: swarm.insa.gov.br
-    GIT_STRATEGY: none
+    GIT_STRATEGY: clone
   script:
     #- ./shell.sh
     - docker build -t ${CNAME}:2.0 . # --no-cache
