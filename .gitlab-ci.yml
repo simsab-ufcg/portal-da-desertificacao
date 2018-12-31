@@ -19,7 +19,7 @@ build-docker-img:
     - cat <<EOF  docker=$(docker ps -a|grep '${CNAME}') \
       if [ "$1" -ne "0" ] \ 
       then \
-      docker rm -f ${CNAME} \
+      docker rm '-f' '${CNAME}'' \
       else \
       exit 1 \
       fi  \ 
