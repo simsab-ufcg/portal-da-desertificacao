@@ -1,15 +1,12 @@
 stages:
-  - test
   - build
+  - test
   - deploy
 
 before_script:
   - pwd
   - ls
-  #- curl https://portal.insa.gov.br|grep peido
-
-
-
+  
 build-docker-img:
   stage: build
   variables:
