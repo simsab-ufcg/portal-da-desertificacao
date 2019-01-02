@@ -12,7 +12,7 @@ build-docker-img:
   stage: build
   variables:
     CNAME: swarm.insa.gov.br
-    GIT_STRATEGY: clone
+    GIT_STRATEGY: none
   cache:
     key: site-package
     policy: push
