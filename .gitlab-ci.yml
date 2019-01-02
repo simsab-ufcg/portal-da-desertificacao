@@ -41,8 +41,9 @@ teste_build:
     key: site-package
     policy: pull
   script: curl -L http://192.168.15.17:8081 |grep Portal
-  when: delayed
-  start_in: 10 seconds
+ # when:
+ #   - delayed
+ #astart_in: 1 minute
   only:
     - master
     
