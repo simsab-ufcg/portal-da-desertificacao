@@ -11,7 +11,7 @@ build-docker-img:
   stage: build
   variables:
     CNAME: swarm.insa.gov.br
-    GIT_STRATEGY: clone
+    GIT_STRATEGY: none
   cache:
     key: site-package
     policy: push
@@ -20,7 +20,7 @@ build-docker-img:
   script:
     - chmod +x shell.sh 
     - ./shell.sh
-    - docker build -t ${CNAME} .  --no-cache
+    - docker build -t ${CNAME} .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
     #- docker tag ${CNAME}:2.0 docker-registry.insa.gov.br:5000/${CNAME}:2.0
     #- docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
@@ -50,7 +50,7 @@ teste_vulnerabilities:
   script:
     - git clone https://github.com/docker/docker-bench-security.git
     - cd docker-bench-security
-    - sudo sh docker-bench-security.sh
+    - sh docker-bench-security.sh
   only: 
     - master
 
