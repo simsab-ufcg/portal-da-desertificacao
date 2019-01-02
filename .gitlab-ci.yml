@@ -38,7 +38,7 @@ teste_build:
     key: site-package
     policy: pull
   
-  script: curl -L http://192.168.15.17:8081 |grep peido
+  script: curl -L http://${CNAME} |grep Portal
   when: manual
   only:
     - master
