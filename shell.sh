@@ -6,7 +6,7 @@ if [ "$docker" == "$docker" ]
 
 then
 
-  docker rm -f $docker
+   docker rm -f $docker > /dev/null 2>&1 &
 
  else
 
