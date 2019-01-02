@@ -34,7 +34,7 @@ build-docker-img:
 
 teste_build:
   stage: test
-   variables:
+  variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
   cache:
