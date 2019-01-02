@@ -6,7 +6,7 @@ stages:
 before_script:
   - pwd
   - ls
-  - curl https://portal.insa.gov.br|grep Portal
+  - curl https://portal.insa.gov.br|grep peido
 
 
 
