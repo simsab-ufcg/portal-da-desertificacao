@@ -2,7 +2,7 @@
 
 docker=$(docker ps -aqf "name=swarm.insa.gov.br")
 
-if [ "$docker" == "$docker" ]
+if [ "$docker" == !"$docker" ]
 
 then
 
