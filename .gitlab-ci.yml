@@ -37,7 +37,8 @@ teste_build:
   cache:
     key: site-package
     policy: pull
-  script: curl -L http://192.168.15.17:8081 |grep Portal
+  
+  script: curl -L http://192.168.15.17:8081 |grep peido
   when: manual
   only:
     - master
