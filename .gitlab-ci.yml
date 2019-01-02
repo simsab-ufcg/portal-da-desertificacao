@@ -6,7 +6,7 @@ stages:
 before_script:
   - pwd
   - ls
-  - curl https://portal.insa.gov.br|grep peido
+  #- curl https://portal.insa.gov.br|grep peido
 
 
 
@@ -25,8 +25,7 @@ build-docker-img:
     - ./shell.sh
     - docker build -t ${CNAME}:2.0 .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}:2.0
-    # - curl -L http://192.168.15.17:8081 |grep Portal
-
+    #- curl -L http://192.168.15.17:8081 |grep Portal
     #- docker tag ${CNAME}:2.0 docker-registry.insa.gov.br:5000/${CNAME}:2.0
     #- docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   environment:
@@ -34,3 +33,16 @@ build-docker-img:
     url: http://${CNAME}
   only:
     - master
+
+
+teste_build:
+  stage: test
+  cache:
+    key: site-package
+    policy: pull
+  script: curl -L http://192.168.15.17:8081 |grep Portal
+  when: delayed
+  start_in: 10 seconds
+  only:
+    - master
+    
