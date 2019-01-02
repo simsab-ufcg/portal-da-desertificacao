@@ -13,6 +13,11 @@ build-docker-img:
   variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: clone
+  cache:
+    key: site-package
+    policy: push
+    paths:
+      - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   script:
     - chmod +x shell.sh 
     - ./shell.sh
@@ -23,10 +28,5 @@ build-docker-img:
   environment:
     name: build
     url: http://${CNAME}
-  #cache:
-  #  key: site-package
-  #  policy: push
-  #  paths:
-  #   - /home/gitlab-runner/builds/fb7da123/0/operations/frontpage-ui
   only:
     - master
