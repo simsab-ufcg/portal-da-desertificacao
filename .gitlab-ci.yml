@@ -30,6 +30,8 @@ build-docker-img:
     url: http://${CNAME}
   only:
     - master
+  tags:
+    - sades-shell
 
 
 teste_build:
@@ -44,6 +46,8 @@ teste_build:
   when: manual
   only:
     - master
+  tags:
+    - sades-shell
     
 
 teste_vulnerabilities:
@@ -60,5 +64,7 @@ teste_vulnerabilities:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
   only: 
     - master
+  tags:
+    - sades-shell
 
   
