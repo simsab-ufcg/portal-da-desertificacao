@@ -18,10 +18,11 @@ build-docker-img:
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   script:
-    - chmod +x shell.sh 
+    - 'chmod +x shell.sh 
     - ./shell.sh
     - docker build -t ${CNAME} .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
+      --progress=false'
     #- docker tag ${CNAME}:2.0 docker-registry.insa.gov.br:5000/${CNAME}:2.0
     #- docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   environment:
