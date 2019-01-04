@@ -73,8 +73,8 @@ pre-production:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
   cache:
-    key: site-package
-    policy: pull
+    key: site-package-push
+    policy: push
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   script:
@@ -91,7 +91,7 @@ production:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
   cache:
-    key: site-package
+    key: site-package-push
     policy: pull
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
@@ -104,6 +104,8 @@ production:
     - master
   tags:
     - sades-shell
+
+    #1
   
 
 
