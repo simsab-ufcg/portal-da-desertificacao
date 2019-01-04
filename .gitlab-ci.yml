@@ -1,14 +1,13 @@
 stages:
   - build
   - test
+  - test-2
   - pos-build
   - deploy
   
 
 before_script:
   - docker info
-  - chmod +x shell.sh 
-  - ./shell.sh
   
 build-docker-img:
   stage: build
@@ -54,7 +53,7 @@ teste_vulnerabilities:
     - sades-shell
 
 teste_build:
-  stage: test
+  stage: test-2
   variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
@@ -62,7 +61,7 @@ teste_build:
     key: site-package
     policy: pull  
   script: curl -L http://${CNAME} |grep Portal
-  when: manual
+  #when: manual
   only:
     - master
   tags:
@@ -85,7 +84,7 @@ pre-production:
     - master
   tags:
     - sades-shell
-
+#t
 production:
   stage: deploy
   variables:
@@ -97,7 +96,6 @@ production:
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   before_script:
-  - docker info
   - chmod +x shell.sh 
   - ./shell.sh
   script:
