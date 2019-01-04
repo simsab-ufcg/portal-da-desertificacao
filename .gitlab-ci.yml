@@ -78,7 +78,7 @@ pre-production:
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   script:
-    - docker tag ${CNAME}:2.0 docker-registry.insa.gov.br:5000/${CNAME}:2.0
+    - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
     - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   only: 
     - master
@@ -99,7 +99,7 @@ production:
   - chmod +x shell.sh 
   - ./shell.sh
   script:
-    - docker run --name frontend-prod-angular -p 8081:80 -it -d ${CNAME}
+    - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
   only: 
     - master
   tags:
