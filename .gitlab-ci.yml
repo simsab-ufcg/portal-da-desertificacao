@@ -35,22 +35,6 @@ build-docker-img:
     - sades-shell
 
 
-teste_build:
-  stage: test
-  variables:
-    CNAME: swarm.insa.gov.br
-    GIT_STRATEGY: none
-  cache:
-    key: site-package
-    policy: pull  
-  script: curl -L http://${CNAME} |grep Portal
-  when: manual
-  only:
-    - master
-  tags:
-    - sades-shell
-    
-
 teste_vulnerabilities:
   stage: test
   script:
@@ -64,6 +48,21 @@ teste_vulnerabilities:
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
   only: 
+    - master
+  tags:
+    - sades-shell
+
+teste_build:
+  stage: test
+  variables:
+    CNAME: swarm.insa.gov.br
+    GIT_STRATEGY: none
+  cache:
+    key: site-package
+    policy: pull  
+  script: curl -L http://${CNAME} |grep Portal
+  when: manual
+  only:
     - master
   tags:
     - sades-shell
