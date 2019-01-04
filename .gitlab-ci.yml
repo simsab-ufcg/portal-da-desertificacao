@@ -61,7 +61,7 @@ teste_build:
     key: site-package
     policy: pull  
   script: curl -L http://${CNAME} |grep Portal
-  when: manual
+  #when: manual
   only:
     - master
   tags:
