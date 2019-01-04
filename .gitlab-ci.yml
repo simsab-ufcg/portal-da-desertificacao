@@ -93,7 +93,7 @@ production:
     GIT_STRATEGY: none
   cache:
     key: site-package
-    policy: push
+    policy: pull
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   before_script:
