@@ -1,11 +1,13 @@
 stages:
   - build
   - test
+  - pos-build
   - deploy
 
 before_script:
-  - pwd
-  - ls .
+  - docker info
+  - chmod +x shell.sh 
+  - ./shell.sh
   
 build-docker-img:
   stage: build
@@ -18,13 +20,8 @@ build-docker-img:
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   script:
-    - chmod +x shell.sh 
-    - ./shell.sh
     - docker build -t ${CNAME} .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
-      # --progress=false
-    #- docker tag ${CNAME}:2.0 docker-registry.insa.gov.br:5000/${CNAME}:2.0
-    #- docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
   environment:
     name: build
     url: http://${CNAME}
@@ -66,5 +63,44 @@ teste_vulnerabilities:
     - master
   tags:
     - sades-shell
+
+pre-production:
+  stage: pos-build
+  variables:
+    CNAME: swarm.insa.gov.br
+    GIT_STRATEGY: none
+  cache:
+    key: site-package
+    policy: pull
+    paths:
+      - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
+  script:
+    - docker tag ${CNAME}:2.0 docker-registry.insa.gov.br:5000/${CNAME}:2.0
+    - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
+  only: 
+    - master
+  tags:
+    - sades-shell
+
+production:
+  stage: deploy
+  variables:
+    CNAME: swarm.insa.gov.br
+    GIT_STRATEGY: none
+  cache:
+    key: site-package
+    policy: push
+    paths:
+      - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
+  script:
+    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
+  only: 
+    - master
+  tags:
+    - sades-shell
+  
+
+
+
 
   
