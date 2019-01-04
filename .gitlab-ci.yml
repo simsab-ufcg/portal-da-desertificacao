@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - test-2
   - pos-build
   - deploy
 
@@ -53,7 +54,7 @@ teste_vulnerabilities:
     - sades-shell
 
 teste_build:
-  stage: test
+  stage: test-2
   variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
