@@ -88,7 +88,7 @@ pre-production:
 production:
   stage: deploy
   variables:
-    CNAME: swarm.insa.gov.br
+    CNAME: docker-registry.insa.gov.br:5000/swarm.insa.gov.br
     GIT_STRATEGY: none
   cache:
     key: site-package-push
@@ -99,13 +99,13 @@ production:
   - chmod +x shell.sh 
   - ./shell.sh
   script:
-    - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
+    - docker run --name frontend-prod-angular -p 8081:80 -it -d ${CNAME}
   only: 
     - master
   tags:
     - sades-shell
 
-    #1
+    
   
 
 
