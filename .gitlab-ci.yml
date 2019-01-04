@@ -79,7 +79,7 @@ pre-production:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
-    - docker push docker-registry.insa.gov.br:5000/frontend-angular:2.0
+    - docker push docker-registry.insa.gov.br:5000/${CNAME}
   only: 
     - master
   tags:
@@ -88,7 +88,7 @@ pre-production:
 production:
   stage: deploy
   variables:
-    CNAME: docker-registry.insa.gov.br:5000/swarm.insa.gov.br
+    CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
   cache:
     key: site-package-push
