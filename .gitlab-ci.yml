@@ -1,9 +1,10 @@
 stages:
   - build
   - test
-  - test-2
+  #- test-2
   - pos-build
   - deploy
+  - test-2
 
 before_script:
   - docker info
