@@ -66,7 +66,7 @@ teste_build:
     - master
   tags:
     - sades-shell
-
+#p
 pre-production:
   stage: pos-build
   variables:
@@ -84,7 +84,7 @@ pre-production:
     - master
   tags:
     - sades-shell
-#t
+
 production:
   stage: deploy
   variables:
