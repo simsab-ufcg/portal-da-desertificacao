@@ -1,7 +1,7 @@
 stages:
   - build
   - test
-  - test-2
+  - #test-2
   - pos-build
   - deploy
   
@@ -53,7 +53,7 @@ teste_vulnerabilities:
     - sades-shell
 
 teste_build:
-  stage: test-2
+  stage: test
   variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
@@ -61,12 +61,13 @@ teste_build:
     key: site-package
     policy: pull  
   script: curl -L http://${CNAME} |grep Portal
-  #when: manual
+  when: delayed
+  start_in: 2 minutes
   only:
     - master
   tags:
     - sades-shell
-#p
+
 pre-production:
   stage: pos-build
   variables:
