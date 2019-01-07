@@ -80,6 +80,9 @@ pre-production:
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
     - docker push docker-registry.insa.gov.br:5000/${CNAME}
+  after_script:
+   - chmod +x shell.sh 
+   - ./shell.sh
   only: 
     - master
   tags:
@@ -95,9 +98,6 @@ production:
     policy: pull
     paths:
       - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
-  before_script:
-  - chmod +x shell.sh 
-  - ./shell.sh
   script:
     - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
   when: delayed
