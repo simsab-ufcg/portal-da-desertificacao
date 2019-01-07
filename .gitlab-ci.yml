@@ -61,7 +61,7 @@ teste_build:
     policy: pull  
   script: curl -L http://${CNAME} |grep Portal
   when: delayed
-  start_in: 2 minutes
+  start_in: 1 minute
   only:
     - master
   tags:
@@ -100,6 +100,8 @@ production:
   - ./shell.sh
   script:
     - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
+  when: delayed
+  start_in: 2 minutes
   only: 
     - master
   tags:
