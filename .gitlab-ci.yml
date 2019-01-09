@@ -28,7 +28,7 @@ build-docker-img:
   only:
     - master
   tags:
-    - sades-shell
+    - runner-shared-shell
 
 
 teste_vulnerabilities:
@@ -46,7 +46,7 @@ teste_vulnerabilities:
   only: 
     - master
   tags:
-    - sades-shell
+    - runner-shared-shell
 
 teste_build:
   stage: test
@@ -62,7 +62,7 @@ teste_build:
   only:
     - master
   tags:
-    - sades-shell
+    - runner-shared-shell
 
 pre-production:
   stage: pos-build
@@ -83,7 +83,7 @@ pre-production:
   only: 
     - master
   tags:
-    - sades-shell
+    - runner-shared-shell
 
 production:
   stage: deploy
@@ -102,7 +102,7 @@ production:
   only: 
     - master
   tags:
-    - sades-shell
+    - sades-prod-shell
 
     
   
