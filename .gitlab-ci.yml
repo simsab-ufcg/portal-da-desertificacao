@@ -9,12 +9,13 @@ build-docker-img:
   stage: build
   variables:
     CNAME: swarm.insa.gov.br
+    CACHE-BUILD: QU61MTD1
     GIT_STRATEGY: none
   cache:
     key: site-package
     policy: push
     paths:
-      - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
+      - /home/gitlab-runner/builds/${CACHE-BUILD}/0/operations/frontpage-ui
   before_script:
   - docker info
   - chmod +x shell.sh 
@@ -37,12 +38,15 @@ teste_vulnerabilities:
     - git clone https://github.com/docker/docker-bench-security.git
     - cd docker-bench-security
     - sh docker-bench-security.sh  
+   variables:
+    CACHE-BUILD: QU61MTD1
+    GIT_STRATEGY: none
   artifacts:
     name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
     when: always
     expire_in: 2h20min
     paths:
-      - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
+      - /home/gitlab-runner/builds/${CACHE-BUILD}/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
   only: 
     - master
   tags:
@@ -52,6 +56,7 @@ teste_build:
   stage: test
   variables:
     CNAME: swarm.insa.gov.br
+    CACHE-BUILD: QU61MTD1
     GIT_STRATEGY: none
   cache:
     key: site-package
@@ -68,12 +73,13 @@ pre-production:
   stage: pos-build
   variables:
     CNAME: swarm.insa.gov.br
+    CACHE-BUILD: QU61MTD1
     GIT_STRATEGY: none
   cache:
     key: site-package-push
     policy: push
     paths:
-      - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
+      - /home/gitlab-runner/builds/${CACHE-BUILD}/0/operations/frontpage-ui
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
     - docker push docker-registry.insa.gov.br:5000/${CNAME}
@@ -90,11 +96,11 @@ production:
   variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
-  cache:
-    key: site-package-push
-    policy: pull
-    paths:
-      - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
+  #cache:
+  #  key: site-package-push
+  # policy: pull
+  #  paths:
+  #    - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
   script:
     - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
   when: delayed
