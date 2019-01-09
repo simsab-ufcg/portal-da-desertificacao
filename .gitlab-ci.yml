@@ -9,7 +9,7 @@ build-docker-img:
   stage: build
   variables:
     CNAME: swarm.insa.gov.br
-    CACHE-BUILD: QU61MTD1
+    CACHE-BUILD: "QU61MTD1"
     GIT_STRATEGY: none
   cache:
     key: site-package
@@ -56,7 +56,7 @@ teste_build:
   stage: test
   variables:
     CNAME: swarm.insa.gov.br
-    CACHE-BUILD: QU61MTD1
+    CACHE-BUILD: "QU61MTD1"
     GIT_STRATEGY: none
   cache:
     key: site-package
@@ -73,7 +73,7 @@ pre-production:
   stage: pos-build
   variables:
     CNAME: swarm.insa.gov.br
-    CACHE-BUILD: QU61MTD1
+    CACHE-BUILD: "QU61MTD1"
     GIT_STRATEGY: none
   cache:
     key: site-package-push
