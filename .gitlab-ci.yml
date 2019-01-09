@@ -10,7 +10,7 @@ build-docker-img:
   variables:
     CNAME: swarm.insa.gov.br
     #CACHE_BUILD: "QU61MTD1"
-    GIT_STRATEGY: none
+    GIT_STRATEGY: pull
   #cache:
   #  key: site-package
   #  policy: push
@@ -40,7 +40,7 @@ teste_vulnerabilities:
     - sh docker-bench-security.sh  
   variables:
     CACHE_BUILD: QU61MTD1
-    GIT_STRATEGY: none
+    GIT_STRATEGY: pull
   artifacts:
     name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
     when: always
@@ -56,7 +56,7 @@ teste_build:
   stage: test
   variables:
     CNAME: swarm.insa.gov.br
-    GIT_STRATEGY: none
+    GIT_STRATEGY: pull
   cache:
     key: site-package
     policy: pull  
@@ -73,7 +73,7 @@ pre-production:
   variables:
     CNAME: swarm.insa.gov.br
     #CACHE-BUILD: "QU61MTD1"
-    GIT_STRATEGY: none
+    GIT_STRATEGY: pull
   #cache:
   #  key: site-package-push
   #  policy: push
@@ -94,7 +94,7 @@ production:
   stage: deploy
   variables:
     CNAME: swarm.insa.gov.br
-    GIT_STRATEGY: none
+    GIT_STRATEGY: pull
   #cache:
   #  key: site-package-push
   #  policy: pull
