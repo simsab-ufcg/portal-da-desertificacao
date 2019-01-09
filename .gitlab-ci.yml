@@ -15,7 +15,7 @@ build-docker-img:
     key: site-package
     policy: push
     paths:
-      - /home/gitlab-runner/builds/${CACHE-BUILD}/0/operations/frontpage-ui
+      - /home/gitlab-runner/builds/QU61MTD1/0/operations/frontpage-ui
   before_script:
   - docker info
   - chmod +x shell.sh 
@@ -96,11 +96,9 @@ production:
   variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: none
-  #cache:
-  #  key: site-package-push
-  # policy: pull
-  #  paths:
-  #    - /home/gitlab-runner/builds/3c304f9e/0/operations/frontpage-ui
+  cache:
+    key: site-package-push
+    policy: pull
   script:
     - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
   when: delayed
