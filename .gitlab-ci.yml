@@ -9,13 +9,13 @@ build-docker-img:
   stage: build
   variables:
     CNAME: swarm.insa.gov.br
-    CACHE_BUILD: "QU61MTD1"
+    #CACHE_BUILD: "QU61MTD1"
     GIT_STRATEGY: none
-  cache:
-    key: site-package
-    policy: push
-    paths:
-      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
+  #cache:
+  #  key: site-package
+  #  policy: push
+  #  paths:
+  #    - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
   before_script:
   - docker info
   - chmod +x shell.sh 
