@@ -38,7 +38,7 @@ teste_vulnerabilities:
     - git clone https://github.com/docker/docker-bench-security.git
     - cd docker-bench-security
     - sh docker-bench-security.sh  
-   variables:
+  variables:
     CACHE-BUILD: QU61MTD1
     GIT_STRATEGY: none
   artifacts:
