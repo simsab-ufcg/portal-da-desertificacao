@@ -21,11 +21,8 @@ build-docker-img:
   - chmod +x shell.sh 
   - ./shell.sh
   script:
-    - docker build -t ${CNAME} .  --no-cache
+    - docker build -t ${CNAME} .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
-  environment:
-    name: build
-    url: http://${CNAME}
   only:
     - master
   tags:
@@ -88,7 +85,7 @@ pre-production:
   only: 
     - master
   tags:
-    - sades-prod-shell
+    - runner-shared-shell
 
 production:
   stage: deploy
