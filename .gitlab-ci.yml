@@ -104,7 +104,7 @@ production:
   script:
     - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
   when: delayed
-  start_in: 1 minute
+  start_in: 2 minutes
   only: 
     - master
   tags:
