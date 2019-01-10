@@ -23,9 +23,6 @@ build-docker-img:
   script:
     - docker build -t ${CNAME} .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
-  environment:
-    name: build
-    url: http://${CNAME}
   only:
     - master
   tags:
@@ -39,7 +36,7 @@ teste_vulnerabilities:
     - cd docker-bench-security
     - sh docker-bench-security.sh  
   variables:
-    CACHE_BUILD: QU61MTD1
+    CACHE_BUILD: "QU61MTD1"
     GIT_STRATEGY: none
   artifacts:
     name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
@@ -82,13 +79,13 @@ pre-production:
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
     - docker push docker-registry.insa.gov.br:5000/${CNAME}
-  #after_script:
-  #- chmod +x shell.sh 
-  #- ./shell.sh
+  after_script:
+  - chmod +x shell.sh 
+  - ./shell.sh
   only: 
     - master
   tags:
-    - runner-shared-shell
+    - sades-prod-shell
 
 production:
   stage: deploy
@@ -105,6 +102,9 @@ production:
     - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
   when: delayed
   start_in: 2 minutes
+  environment:
+    name: build
+    url: http://${CNAME}
   only: 
     - master
   tags:
