@@ -102,7 +102,7 @@ production:
   script:
     - docker run --name ${CNAME_PROD} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}
   when: delayed
-  start_in: 1 minute
+  start_in: 2 minute2
   environment:
     name: build
     url: http://${CNAME}
