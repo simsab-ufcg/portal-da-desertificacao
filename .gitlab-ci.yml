@@ -8,7 +8,7 @@ stages:
 build-docker-img:
   stage: build
   variables:
-    CNAME: swarm.insa.gov.br
+    CNAME: "swarm.insa.gov.br"
     CACHE_BUILD: "QU61MTD1"
     GIT_STRATEGY: pull
   cache:
@@ -24,7 +24,7 @@ build-docker-img:
     - docker build -t ${CNAME} .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
   only:
-    - master
+    - develop
   tags:
     - runner-shared-shell
 
@@ -45,14 +45,14 @@ teste_vulnerabilities:
     paths:
       - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
   only: 
-    - master
+    - develop
   tags:
     - runner-shared-shell
 
 teste_build:
   stage: test
   variables:
-    CNAME: swarm.insa.gov.br
+    CNAME: "swarm.insa.gov.br"
     GIT_STRATEGY: pull
   cache:
     key: site-package
@@ -61,14 +61,15 @@ teste_build:
   when: delayed
   start_in: 1 minute
   only:
-    - master
+    - develop
   tags:
     - runner-shared-shell
 
 pre-production:
   stage: pos-build
   variables:
-    CNAME: swarm.insa.gov.br
+    CNAME: "swarm.insa.gov.br"
+    CNAME_PROD: "swarm-prod.insa.gov.br"
     CACHE_BUILD: "QU61MTD1"
     GIT_STRATEGY: none
   cache:
@@ -77,8 +78,8 @@ pre-production:
     paths:
       - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
   script:
-    - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
-    - docker push docker-registry.insa.gov.br:5000/${CNAME}
+    - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME_PROD}
+    - docker push docker-registry.insa.gov.br:5000/${CNAME_PROD}
   after_script:
   - chmod +x shell.sh 
   - ./shell.sh
@@ -90,7 +91,7 @@ pre-production:
 production:
   stage: deploy
   variables:
-    CNAME: swarm.insa.gov.br
+    CNAME_PROD: swarm-prod.insa.gov.br
     GIT_STRATEGY: pull
   cache:
     key: site-package-push
@@ -99,9 +100,9 @@ production:
   - chmod +x shell.sh 
   - ./shell.sh
   script:
-    - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
+    - docker run --name ${CNAME_PROD} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}
   when: delayed
-  start_in: 2 minutes
+  start_in: 1 minute
   environment:
     name: build
     url: http://${CNAME}
