@@ -9,13 +9,13 @@ build-docker-img:
   stage: build
   variables:
     CNAME: swarm.insa.gov.br
-    #CACHE_BUILD: "QU61MTD1"
+    CACHE_BUILD: "QU61MTD1"
     GIT_STRATEGY: pull
-  #cache:
-  #  key: site-package
-  #  policy: push
-  #  paths:
-  #    - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
+  cache:
+    key: site-package
+    policy: push
+    paths:
+      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
   before_script:
   - docker info
   - chmod +x shell.sh 
@@ -72,13 +72,13 @@ pre-production:
   stage: pos-build
   variables:
     CNAME: swarm.insa.gov.br
-    #CACHE-BUILD: "QU61MTD1"
+    CACHE-BUILD: "QU61MTD1"
     GIT_STRATEGY: pull
-  #cache:
-  #  key: site-package-push
-  #  policy: push
-  #  paths:
-  #    - /home/gitlab-runner/builds/${CACHE-BUILD}/0/operations/frontpage-ui
+  cache:
+    key: site-package-push
+    policy: push
+    paths:
+      - /home/gitlab-runner/builds/${CACHE-BUILD}/0/operations/frontpage-ui
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
     - docker push docker-registry.insa.gov.br:5000/${CNAME}
@@ -95,9 +95,9 @@ production:
   variables:
     CNAME: swarm.insa.gov.br
     GIT_STRATEGY: pull
-  #cache:
-  #  key: site-package-push
-  #  policy: pull
+  cache:
+    key: site-package-push
+    policy: pull
   script:
     - docker run --name ${CNAME} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME}
   when: delayed
