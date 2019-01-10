@@ -40,7 +40,7 @@ teste_vulnerabilities:
     - sh docker-bench-security.sh  
   variables:
     CACHE_BUILD: QU61MTD1
-    GIT_STRATEGY: pull
+    GIT_STRATEGY: none
   artifacts:
     name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
     when: always
@@ -56,7 +56,7 @@ teste_build:
   stage: test
   variables:
     CNAME: swarm.insa.gov.br
-    GIT_STRATEGY: pull
+    GIT_STRATEGY: none
   cache:
     key: site-package
     policy: pull  
@@ -72,13 +72,13 @@ pre-production:
   stage: pos-build
   variables:
     CNAME: swarm.insa.gov.br
-    CACHE-BUILD: "QU61MTD1"
-    GIT_STRATEGY: pull
+    CACHE_BUILD: "QU61MTD1"
+    GIT_STRATEGY: none
   cache:
     key: site-package-push
     policy: push
     paths:
-      - /home/gitlab-runner/builds/${CACHE-BUILD}/0/operations/frontpage-ui
+      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME}
     - docker push docker-registry.insa.gov.br:5000/${CNAME}
