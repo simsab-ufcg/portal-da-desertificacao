@@ -80,9 +80,6 @@ pre-production:
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME_PROD}
     - docker push docker-registry.insa.gov.br:5000/${CNAME_PROD}
-  after_script:
-  - chmod +x shell.sh 
-  - ./shell.sh
   only: 
     - master
   tags:
