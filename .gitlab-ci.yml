@@ -23,8 +23,6 @@ build-docker-img:
   script:
     - docker build -t ${CNAME} .  --no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
-  only:
-    - develop
   tags:
     - runner-shared-shell
 
@@ -44,8 +42,6 @@ teste_vulnerabilities:
     expire_in: 2h20min
     paths:
       - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
-  only: 
-    - develop
   tags:
     - runner-shared-shell
 
@@ -60,8 +56,6 @@ teste_build:
   script: curl -L http://${CNAME} |grep Portal
   when: delayed
   start_in: 1 minute
-  only:
-    - develop
   tags:
     - runner-shared-shell
 
@@ -80,8 +74,6 @@ pre-production:
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME_PROD}
     - docker push docker-registry.insa.gov.br:5000/${CNAME_PROD}
-  only: 
-    - master
   tags:
     - runner-shared-shell
 
@@ -93,11 +85,8 @@ clear_pro_production:
   script:
   - chmod +x shell.sh 
   - ./shell.sh
-  only: 
-    - master
   tags:
     - sades-prod-shell
-
 
 production:
   stage: deploy
@@ -111,8 +100,6 @@ production:
   environment:
     name: build
     url: http://${CNAME_PROD}
-  only: 
-    - master
   tags:
     - sades-prod-shell
 

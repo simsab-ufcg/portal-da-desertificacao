@@ -1,15 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
-docker=$(docker ps -aqf "name=swarm-prod.insa.gov.br")
+docker=$(docker ps -aqf "name=swarm.insa.gov.br")
+docker_prod=$(docker ps -aqf "name=swarm-prod.insa.gov.br")
 
-if [ "$docker" == "$docker" ]
-
-then
-
+if [ "$docker" == "$docker" ]; then
    docker rm -f $docker > /dev/null 2>&1 &
+   echo "Apagando Homologação: $docker"
 
- else
+  if [ "$docker_prod" == "$docker_prod" ];then
+  docker rm -f $docker_prod > /dev/null 2>&1 &
+  echo "Apagando Produção: $docker_prod"
 
-  echo "$docker: não deu certo"  
+  else 
+    exit 0 
+  fi
+fi
 
-fi 
