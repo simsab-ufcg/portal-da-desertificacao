@@ -1,6 +1,6 @@
 #!/bin/sh
 
-docker=$(docker ps -aqf "name=swarm-prod.insa.gov.br")
+docker=$(docker ps -aqf "name=swarm.insa.gov.br")
 
 if [ "$docker" == "$docker" ]
 
