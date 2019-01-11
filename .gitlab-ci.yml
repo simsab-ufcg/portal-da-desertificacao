@@ -88,21 +88,29 @@ pre-production:
   tags:
     - runner-shared-shell
 
+
+clear_pro_production:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: pull
+  script:
+  - chmod +x shell.sh 
+  - ./shell.sh
+  only: 
+    - master
+  tags:
+    - sades-prod-shell
+
+
 production:
   stage: deploy
   variables:
     CNAME_PROD: swarm-prod.insa.gov.br
     GIT_STRATEGY: pull
-  cache:
-    key: site-package-push
-    policy: pull
-  before_script:
-  - chmod +x shell.sh 
-  - ./shell.sh
   script:
     - docker run --name ${CNAME_PROD} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}
   when: delayed
-  start_in: 2 minutes
+  start_in: 1 minute
   environment:
     name: build
     url: http://${CNAME_PROD}
