@@ -21,7 +21,7 @@ build-docker-img:
   - chmod +x shell.sh 
   - ./shell.sh
   script:
-    - docker build -t ${CNAME} .  #--no-cache
+    - docker build -t ${CNAME} .  --no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
   tags:
     - runner-shared-shell
