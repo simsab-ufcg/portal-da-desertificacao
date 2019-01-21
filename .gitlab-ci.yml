@@ -45,7 +45,7 @@ build-docker-img:
     refs:
       - master
   tags:
-    - runner-shared-shell
+    - sades-prod-shell
 
 
 teste_vulnerabilities:
