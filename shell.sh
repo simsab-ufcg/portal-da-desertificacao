@@ -1,7 +1,7 @@
 #!/bin/bash
 
 docker=$(docker ps -aqf "name=swarm.insa.gov.br")
-docker_prod=$(docker ps -aqf "name=swarm-prod.insa.gov.br")
+docker_prod=$(docker ps -aqf "name=portaldadesertificacao.insa.gov.br")
 
 if [ "$docker" == "$docker" ]; then
    docker rm -f $docker > /dev/null 2>&1 &

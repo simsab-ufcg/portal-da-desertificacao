@@ -1,9 +1,27 @@
 stages:
+  - test_app
   - build
   - test
   - pos-build
   - deploy
   
+
+node_app:
+  image: centos:centos7
+  stage: test_app
+  before_script:
+    -  yum install sudo -y
+    -  curl -sL https://rpm.nodesource.com/setup_9.x | sudo -E bash -
+    -  yum install -y nodejs
+    -  npm install -g @angular/cli@^7.2.2 broken-link-checker@^0.7.8 wait-on@^3.2.0
+  script:
+    -  npm install
+    -  ng serve --host 0.0.0.0 --port 80 &
+    -  wait-on http-get://localhost --timeout 90000
+    -  blc --recursive --exclude-external http://localhost
+  tags:
+    - runner-shared-docker
+
 
 build-docker-img:
   stage: build
@@ -23,6 +41,9 @@ build-docker-img:
   script:
     - docker build -t ${CNAME} .  --no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
+  only:
+    refs:
+      - master
   tags:
     - runner-shared-shell
 
@@ -42,6 +63,9 @@ teste_vulnerabilities:
     expire_in: 2h20min
     paths:
       - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
+  only:
+    refs:
+      - master
   tags:
     - runner-shared-shell
 
@@ -53,9 +77,14 @@ teste_build:
   cache:
     key: site-package
     policy: pull  
-  script: curl -L http://${CNAME} |grep Portal
+  script:
+    - docker container ls | grep ${CNAME}
+    - curl -L http://${CNAME} |grep Portal
   when: delayed
   start_in: 1 minute
+  only:
+    refs:
+      - master
   tags:
     - runner-shared-shell
 
@@ -63,7 +92,7 @@ pre-production:
   stage: pos-build
   variables:
     CNAME: "swarm.insa.gov.br"
-    CNAME_PROD: "swarm-prod.insa.gov.br"
+    CNAME_PROD: "portaldadesertificacao.insa.gov.br"
     CACHE_BUILD: "QU61MTD1"
     GIT_STRATEGY: none
   cache:
@@ -91,10 +120,10 @@ clear_pro_production:
 production:
   stage: deploy
   variables:
-    CNAME_PROD: swarm-prod.insa.gov.br
+    CNAME_PROD: portaldadesertificacao.insa.gov.br
     GIT_STRATEGY: pull
   script:
-    - docker run --name ${CNAME_PROD} -p 8081:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}
+    - docker run --name ${CNAME_PROD} -p 8080:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}
   when: delayed
   start_in: 1 minute
   environment:
