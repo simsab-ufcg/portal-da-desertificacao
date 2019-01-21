@@ -12,7 +12,7 @@ RUN yum clean all &&  yum  install -y \
     && curl -sL https://rpm.nodesource.com/setup_9.x | sudo -E bash -  \
     && yum  install -y nodejs  \
     && rm -rf /var/cache/yum   \
-    && git clone  http://ck76uYVWQKRo8Nj1Zyju:onG25oe8FryQnX6rBT6a@gitlab.insa.gov.br/developers/frontpage-ui.git
+    && git clone  http://pedro.pacheco:Sysadmin.37@gitlab.insa.gov.br/developers/frontpage-ui.git
 
 
 
