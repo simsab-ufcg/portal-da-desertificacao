@@ -1,5 +1,5 @@
 FROM centos:centos7
-LABEL maintainer="Pedro Pacheco <users2010@gmai.com>"
+LABEL maintainer="Pedro Pacheco <users2010@gmail.com>"
 
 ENV LANG C.UTF-8
 
