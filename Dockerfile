@@ -1,6 +1,7 @@
 FROM centos:centos7
-MAINTAINER Pedro Pacheco <pedro.pacheco@insa.gov.br>
+LABEL maintainer="Pedro Pacheco <users2010@gmail.com>"
 
+ENV LANG C.UTF-8
 
 WORKDIR /opt
 
