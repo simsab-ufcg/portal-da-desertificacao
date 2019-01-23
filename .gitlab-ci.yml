@@ -26,6 +26,8 @@ node_app:
 vulnerabilities check:
   image: node
   stage: test_app
+  variables:
+    GIT_STRATEGY: pull
   script:
     - npm install && snyk auth 5ce35e61-e5e5-46f3-9ed8-436ae6b026e1
     - snyk test --severity-threshold=high
