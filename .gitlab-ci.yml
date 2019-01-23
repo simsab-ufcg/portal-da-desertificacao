@@ -27,7 +27,9 @@ vulnerabilities check:
   image: node
   stage: test_app
   script:
-    - npm install && npm run scan
+    - npm install -g snyk && snyk auth 5ce35e61-e5e5-46f3-9ed8-436ae6b026
+    - npm install
+    - snyk test
   tags:
     - runner-shared-docker
 
