@@ -23,6 +23,16 @@ node_app:
     - runner-shared-docker
 
 
+vulnerabilities check:
+  image: node
+  stage: test_app
+  script:
+    - npm install && npm run scan
+  tags:
+    - runner-shared-docker
+
+
+
 build-docker-img:
   stage: build
   variables:
