@@ -6,6 +6,7 @@ stages:
   - deploy
   
 
+
 node_app:
   image: centos:centos7
   stage: test_app
@@ -35,7 +36,7 @@ vulnerabilities check:
 
 
 
-build-docker-img:
+build-docker-img: &build
   stage: build
   variables:
     CNAME: "swarm.insa.gov.br"
@@ -46,11 +47,9 @@ build-docker-img:
     policy: push
     paths:
       - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
-  before_script:
-  - docker info
-  - chmod +x shell.sh 
-  - ./shell.sh
   script:
+    - chmod +x shell.sh 
+    - ./shell.sh
     - docker build -t ${CNAME} .  --no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
   only:
@@ -61,68 +60,43 @@ build-docker-img:
 
 
 teste_vulnerabilities:
+  <<: *build
   stage: test
   script:
     - git clone https://github.com/docker/docker-bench-security.git
     - cd docker-bench-security
     - sh docker-bench-security.sh  
-  variables:
-    CACHE_BUILD: "QU61MTD1"
-    GIT_STRATEGY: pull
   artifacts:
     name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
     when: always
     expire_in: 2h20min
     paths:
       - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
-  only:
-    refs:
-      - master
-  tags:
-    - runner-shared-shell
-
+  
 teste_build:
+  <<: *build
   stage: test
-  variables:
-    CNAME: "swarm.insa.gov.br"
-    GIT_STRATEGY: pull
   cache:
-    key: site-package
     policy: pull  
   script:
     - docker container ls | grep ${CNAME}
     - curl -L http://${CNAME} |grep Portal
   when: delayed
   start_in: 1 minute
-  only:
-    refs:
-      - master
-  tags:
-    - runner-shared-shell
-
+  
 pre-production:
+  <<: *build
   stage: pos-build
   variables:
-    CNAME: "swarm.insa.gov.br"
     CNAME_PROD: "portaldadesertificacao.insa.gov.br"
-    CACHE_BUILD: "QU61MTD1"
     GIT_STRATEGY: none
-  cache:
-    key: site-package-push
-    policy: push
-    paths:
-      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME_PROD}
     - docker push docker-registry.insa.gov.br:5000/${CNAME_PROD}
-  tags:
-    - runner-shared-shell
-
-
-clear_pro_production:
+  
+clear_pro_production: &pro_production
+  <<: *build
   stage: deploy
-  variables:
-    GIT_STRATEGY: pull
   script:
   - chmod +x shell.sh 
   - ./shell.sh
@@ -130,10 +104,9 @@ clear_pro_production:
     - sades-prod-shell
 
 production:
-  stage: deploy
+  <<: *pro_production
   variables:
     CNAME_PROD: portaldadesertificacao.insa.gov.br
-    GIT_STRATEGY: pull
   script:
     - docker run --name ${CNAME_PROD} -p 8080:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}
   when: delayed
@@ -141,10 +114,7 @@ production:
   environment:
     name: build
     url: http://${CNAME_PROD}
-  tags:
-    - sades-prod-shell
-
-    
+      
   
 
 
