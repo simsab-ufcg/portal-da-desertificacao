@@ -1,10 +1,6 @@
 FROM centos:centos7
 LABEL maintainer="Pedro Pacheco <pedro.pacheco@insa.gov.br>"
 
-ENV LANG C.UTF-8
-
-
-
 WORKDIR /opt
 
 RUN yum clean all &&  yum  install -y \
@@ -17,12 +13,9 @@ RUN yum clean all &&  yum  install -y \
     && rm -rf /var/cache/yum   \
     && git clone  http://gitlab+deploy-token-1:tSDZTm5N6UJ6qyQyUqrw@gitlab.insa.gov.br/developers/frontpage-ui.git
 
-
-
 WORKDIR /opt/frontpage-ui
 
 RUN npm install -g @angular/cli && npm install 
-
 
 ENTRYPOINT ["/usr/bin/ng","serve"]
 
