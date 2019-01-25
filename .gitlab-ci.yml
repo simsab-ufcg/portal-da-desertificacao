@@ -82,6 +82,7 @@ pre-production:
   <<: *build
   stage: pos-build
   variables:
+    CNAME: "swarm.insa.gov.br"
     CNAME_PROD: "portaldadesertificacao.insa.gov.br"
     GIT_STRATEGY: none
   script:
