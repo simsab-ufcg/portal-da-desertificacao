@@ -19,7 +19,7 @@ node_app:
     -  wait-on http-get://localhost --timeout 90000
     -  blc --recursive --exclude-external http://localhost
   tags:
-    - runner-shared-docker
+    - sades-prod-shell
 
 vulnerabilities check:
   image: node
