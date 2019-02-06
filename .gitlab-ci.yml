@@ -19,7 +19,7 @@ node_app:
     -  wait-on http-get://localhost --timeout 90000
     -  blc --recursive --exclude-external http://localhost
   tags:
-    - runner-shared-docker
+    - sades-prod-teste
 
 vulnerabilities check:
   image: node
@@ -29,7 +29,7 @@ vulnerabilities check:
     - snyk test --severity-threshold=high
     - snyk test --severity-threshold=medium
   tags:
-    - runner-shared-docker
+    - sades-prod-teste
 
 build-docker-img: &build
   stage: build
@@ -45,7 +45,7 @@ build-docker-img: &build
   script:
     - chmod +x shell.sh 
     - ./shell.sh
-    - docker build -t ${CNAME} .  #--no-cache
+    - docker build -t ${CNAME} .  --no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
   only:
     refs:
