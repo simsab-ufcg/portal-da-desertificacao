@@ -45,7 +45,7 @@ build-docker-img: &build
   script:
     - chmod +x shell.sh 
     - ./shell.sh
-    - docker build -t ${CNAME} .  --no-cache
+    - docker build -t ${CNAME} .  #--no-cache
     - docker run --name ${CNAME} -p 8081:80 -it -d ${CNAME}
   only:
     refs:
