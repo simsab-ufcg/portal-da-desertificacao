@@ -51,7 +51,7 @@ build-docker-img: &build
     refs:
       - master
   tags:
-    - runner-shared-shell
+    - runner-teste-insaee-shell 
 
 teste_vulnerabilities:
   <<: *build
