@@ -19,7 +19,7 @@ node_app:
     -  wait-on http-get://localhost --timeout 90000
     -  blc --recursive --exclude-external http://localhost
   tags:
-    - runner-shared-docker 
+    - runner-teste-insaee  
 
 vulnerabilities check:
   image: node
@@ -29,7 +29,7 @@ vulnerabilities check:
     - snyk test --severity-threshold=high
     - snyk test --severity-threshold=medium
   tags:
-    - runner-shared-docker 
+    - runner-teste-insaee  
 
 build-docker-img: &build
   stage: build
