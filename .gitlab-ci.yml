@@ -41,7 +41,7 @@ build-docker-img: &build
     key: site-package
     policy: push
     paths:
-      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui
+      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/developers/frontpage-ui
   script:
     - chmod +x shell.sh 
     - ./shell.sh
@@ -65,7 +65,7 @@ teste_vulnerabilities:
     when: always
     expire_in: 2h20min
     paths:
-      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/operations/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
+      - /home/gitlab-runner/builds/${CACHE_BUILD}/0/developers/frontpage-ui/docker-bench-security/docker-bench-security.sh.log
   
 teste_build:
   <<: *build
