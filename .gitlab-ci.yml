@@ -35,7 +35,7 @@ build-docker-img: &build
   stage: build
   variables:
     CNAME: "swarm.insa.gov.br"
-    CACHE_BUILD: "3kk4KQcy"
+    CACHE_BUILD: "_pxJbgJ6"
     GIT_STRATEGY: pull
   cache:
     key: site-package
