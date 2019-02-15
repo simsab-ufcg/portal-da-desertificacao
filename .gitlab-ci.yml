@@ -84,7 +84,7 @@ pre-production:
   variables:
     CNAME: "swarm.insa.gov.br"
     CNAME_PROD: "portaldadesertificacao.insa.gov.br"
-    GIT_STRATEGY: none
+    GIT_STRATEGY: pull
   script:
     - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME_PROD}
     - docker push docker-registry.insa.gov.br:5000/${CNAME_PROD}
