@@ -38,7 +38,7 @@ build-docker-img: &build
     CACHE_BUILD: "_pxJbgJ6"
     GIT_STRATEGY: pull
   cache:
-    key: site-package
+    key: site-package-2
     policy: push
     paths:
       - /home/gitlab-runner/builds/${CACHE_BUILD}/0/developers/frontpage-ui
