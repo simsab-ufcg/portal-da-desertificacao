@@ -1,5 +1,5 @@
 FROM centos:centos7
-LABEL maintainer="Pedro Pacheco <pedro.pacheco@insa.gov.br>"
+LABEL maintainer="Pedro Vitor C. Pacheco <pedro.pacheco@insa.gov.br>"
 
 WORKDIR /opt
 
