@@ -86,8 +86,8 @@ pre-production:
     CNAME_PROD: "portaldadesertificacao.insa.gov.br"
     GIT_STRATEGY: pull
   script:
-    - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME_PROD}
-    - docker push docker-registry.insa.gov.br:5000/${CNAME_PROD}
+    - docker tag ${CNAME} docker-registry.insa.gov.br:5000/${CNAME_PROD}:$CI_COMMIT_SHORT_SHA
+    - docker push docker-registry.insa.gov.br:5000/${CNAME_PROD}:$CI_COMMIT_SHORT_SHA
   
 clear_pro_production: &pro_production
   <<: *build
@@ -103,7 +103,7 @@ production:
   variables:
     CNAME_PROD: portaldadesertificacao.insa.gov.br
   script:
-    - docker run --name ${CNAME_PROD} -p 8080:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}
+    - docker run --name ${CNAME_PROD} -p 8080:80 -it -d docker-registry.insa.gov.br:5000/${CNAME_PROD}:$CI_COMMIT_SHORT_SHA
   when: delayed
   start_in: 1 minute
   environment:
