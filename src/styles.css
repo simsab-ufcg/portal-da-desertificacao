@@ -35,7 +35,7 @@
 
 body {
     position:absolute;
-    background: url('./assets/img/backgrounds/bg.png');
+    background: url('./assets/img/backgrounds/bg.jpg');
     background-size: cover;
     background-blend-mode: color-dodge;
     background-repeat: no-repeat;

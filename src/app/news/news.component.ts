@@ -21,7 +21,7 @@ export class NewsComponent implements OnInit {
   posts$: Observable<any[]>;
 
   getPosts(): Observable<any[]> {
-    return this.http.get<any[]>('http://blog.coddy.com.br/wp-json/wp/v2/posts?_embed', {
+    return this.http.get<any[]>('https://blog.coddy.com.br/wp-json/wp/v2/posts?_embed', {
       params: {
         per_page: '6'
       }
@@ -29,7 +29,7 @@ export class NewsComponent implements OnInit {
   }
 
   getMedias(): Observable<any[]> {
-    return this.http.get<any[]>('http://blog.coddy.com.br/wp-json/wp/v2/media?_embed');
+    return this.http.get<any[]>('https://blog.coddy.com.br/wp-json/wp/v2/media?_embed');
   }
 
   constructor(private http: HttpClient) {
