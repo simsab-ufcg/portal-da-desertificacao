@@ -86,7 +86,7 @@ td {
 
 .aboutspeed {
   animation-duration: 3s;
-  animation-delay: 0.1s;
+  animation-delay: 0.4s;
 }
 
 .feedspeed {
@@ -121,5 +121,5 @@ td {
 
 .urfspeed {
   animation-duration: 5s;
-  animation-delay: 4.2s;
+  animation-delay: 0s;
 }
