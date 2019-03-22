@@ -123,3 +123,16 @@ td {
   animation-duration: 5s;
   animation-delay: 0s;
 }
+
+.modal-title {
+  color: #000;
+}
+
+.info-icon-modal {
+  position: relative;
+}
+
+
+.text-modal {
+  vertical-align:middle;
+}
