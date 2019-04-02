@@ -4,7 +4,7 @@ stages:
   - test
   - pos-build
   - deploy
-  
+#teste commit:  
 node_app:
   image: centos:centos7
   stage: test_app
