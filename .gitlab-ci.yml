@@ -4,7 +4,7 @@ stages:
   - test
   - pos-build
   - deploy
-#teste commit:  
+ 
 node_app:
   image: centos:centos7
   stage: test_app
@@ -28,8 +28,8 @@ vulnerabilities check:
     - npm install -g snyk && npm install && snyk auth 5ce35e61-e5e5-46f3-9ed8-436ae6b026e1
     - snyk test --severity-threshold=high
     - snyk test --severity-threshold=medium
-  tags:
-    - runner-shared-docker  
+  #tags:
+  #  - runner-shared-docker  
 
 build-docker-img: &build
   stage: build
