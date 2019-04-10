@@ -19,7 +19,7 @@
 
 .animate-pop-in {
   animation: pop-in .6s ease-out forwards;
-} 
+}
 
 .animated {
   margin-bottom:60px;
@@ -120,8 +120,8 @@ td {
 }
 
 .urfspeed {
-  animation-duration: 5s;
-  animation-delay: 0s;
+  animation-duration: 8s;
+  animation-delay: 4s;
 }
 
 .modal-title {
