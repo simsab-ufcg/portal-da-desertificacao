@@ -19,7 +19,7 @@
 
 .animate-pop-in {
   animation: pop-in .6s ease-out forwards;
-} 
+}
 
 .animated {
   margin-bottom:60px;
@@ -86,7 +86,7 @@ td {
 
 .aboutspeed {
   animation-duration: 3s;
-  animation-delay: 0.1s;
+  animation-delay: 0.4s;
 }
 
 .feedspeed {
@@ -120,6 +120,19 @@ td {
 }
 
 .urfspeed {
-  animation-duration: 5s;
-  animation-delay: 4.2s;
+  animation-duration: 8s;
+  animation-delay: 4s;
+}
+
+.modal-title {
+  color: #000;
+}
+
+.info-icon-modal {
+  position: relative;
+}
+
+
+.text-modal {
+  vertical-align:middle;
 }

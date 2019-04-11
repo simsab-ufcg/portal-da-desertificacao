@@ -9,7 +9,6 @@ import {AboutComponent} from './about/about.component';
 import {TeamComponent} from './team/team.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {NewsComponent} from './news/news.component';
 import { InsaComponent } from './insa/insa.component';
 import { DesertificationComponent } from './desertification/desertification.component';
 import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
@@ -28,7 +27,6 @@ const router: Routes = [
     {path: 'projeto', component: AboutComponent},
     {path: 'parceiros', component: PartnersComponent},
     {path: 'equipe', component: TeamComponent},
-    {path: 'noticias', component: NewsComponent},
     {path: 'insa', component: InsaComponent},
     {path: 'desertificacao', component: DesertificationComponent}
 ];
@@ -42,7 +40,6 @@ const router: Routes = [
         AboutComponent,
         TeamComponent,
         HomeComponent,
-        NewsComponent,
         InsaComponent,
         DesertificationComponent,
         StripHTMLPipe,
