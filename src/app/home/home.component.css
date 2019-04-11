@@ -136,3 +136,7 @@ td {
 .text-modal {
   vertical-align:middle;
 }
+
+.cursor {
+  cursor: pointer;
+}
