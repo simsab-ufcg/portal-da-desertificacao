@@ -1,5 +1,7 @@
 FROM centos:centos7
-LABEL maintainer="Pedro Vitor C. Pacheco <pedro.pacheco@insa.gov.br>"
+LABEL maintainer="Pedro Pacheco <users2010@gmail.com>"
+
+ENV LANG C.UTF-8
 
 WORKDIR /opt
 
@@ -15,7 +17,7 @@ RUN yum clean all &&  yum  install -y \
 
 WORKDIR /opt/frontpage-ui
 
-RUN npm install -g @angular/cli && npm install 
+RUN npm install -g @angular/cli && npm install
 
 ENTRYPOINT ["/usr/bin/ng","serve"]
 
