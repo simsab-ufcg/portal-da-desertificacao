@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { } from '@types/googlemaps';
+import 'googlemaps';
 
 @Component({
   selector: 'app-home',
